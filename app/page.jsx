@@ -1,25 +1,17 @@
 'use client'
 
-import { useState,useEffect } from 'react'
-
+import { useState } from 'react'
 
 import Link from 'next/link'
 
-
 const HomePage = () => {
-    // const [topicOptions, setTopicOptions] = useState(topics.python.beginner)
-
-    // const router = useRouter()
-
     const [language, setLanguage] = useState('SurgicalBasicPrinciples')
     const [difficulty, setDifficulty] = useState('Beginner')
     const [topic, setTopic] = useState('Random')
     const [numQuestions, setNumQuestions] = useState('5')
 
-    const handleSetQuestions = (e) => {}
-
     const handleLanguageSelect = (e) => {
-        
+        setLanguage(e.target.value)
     }
 
     const handleSubmit = (e) => {
@@ -30,14 +22,10 @@ const HomePage = () => {
         // router.push('/quiz')
     }
 
+    // bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent
 
     return (
-
-       
-        <div className='min-h-screen grid place-items-center bg-cover'>
-
-            
-
+        <div className='min-h-screen grid place-items-center'>
             <div className='border rounded border-white/0 '>
                 <h1 className='text-center text-5xl md:text-7xl font-bold bg-gradient-to-r from-emerald-500 via-pink-400 to-blue-500 bg-clip-text text-transparent q-animate-gradient'>
                     AI Quiz Generator
@@ -51,72 +39,97 @@ const HomePage = () => {
                     {/* <div className='flex flex-col gap-6'> */}
                     <div className='grid grid-cols-2 gap-x-8 gap-y-6'>
 
-
-
-                        {/* SUBJECT */}
+                        {/* LANGUAGE */}
                         <div className='flex flex-col'>
-                                <label
-                                    htmlFor='Subject'
-                                    className='uppercase text-xs font-semibold'
-                                >
-                                    Subject
-                                </label>
-                                <select
-                                    name='subject'
-                                    id="Subject"
-                                    className='quiz-select '
-                                >
-                                    <option value='Subject1'>Subject 1</option>
-                                    <option value='Subject1'>Subject 2</option>
-                                    <option value='Subject3'>Subject 3</option>
-                                    
-                                </select>
-                            </div>
+                            <label
+                                htmlFor='language'
+                                className='uppercase text-xs'
+                            >
+                                Language
+                            </label>
+                            <select
+                                value={language}
+                                onChange={handleLanguageSelect}
+                                name='language'
+                                className='quiz-select'
+                            >
+                                <option value='SurgicalBasicPrinciples'>Surgical Basic Principles</option>
+                                <option value='PerioperativeManagement'>Perioperative Management</option>
+                                <option value='TraumaAndCriticalCare'>Trauma and Critical Care</option>
+                                <option value='TransplantationAndImmunology'>Transplantation and Immunology</option>
+                                <option value='SurgicalOncology'>Surgical Oncology</option>
+                                <option value='HeadAndNeck'>HeadAndNeck</option>
+                                <option value='Breast'>Breast</option>
+                                <option value='Endocrine'>Endocrine</option>
+                                <option value='Esophagus'>Esophagus</option>
+                                <option value='Abdomen'>Abdomen</option>
+                                <option value='Chest'>Chest</option>
+                                <option value='Vascular'>Vascular</option>
+                                <option value='SpecialtiesInGeneralSurgery'>Specialties in General Surgery</option>
+                            </select>
+                        </div>
 
                         {/* TOPIC */}
                         <div className='flex flex-col'>
                             <label
-                                htmlFor='Topic'
-                                className='uppercase text-xs font-semibold'
+                                htmlFor='topic'
+                                className='uppercase text-xs'
                             >
                                 Topic
                             </label>
                             <select
-                                id="Topic"
-                                name='Topic'
-                                className='quiz-select'
-                            >
-                                <option value='Topic1'>Topic 1</option>
-                                <option value='Topic2'>Topic 2</option>
-                                <option value='Topic3'>Topic 3</option>
-                                
-                            </select>
-                        </div>
-
-                        {/* SUB TOPIC */}
-                        <div className='flex flex-col'>
-                            <label
-                                htmlFor='SubTopic'
-                                className='uppercase text-xs font-semibold'
-                            >
-                                Sub Topic
-                            </label>
-                            <select
-                                id="SubTopic"
+                                value={topic}
+                                onChange={(e) => setTopic(e.target.value)}
                                 name='topic'
                                 className='quiz-select'
                             >
-                                <option value="SubTopic1">SubTopic 1</option>
-                                <option value="SubTopic2">SubTopic 2</option>
-                                <option value="SubTopic3">SubTopic 3</option>
+                                {/* {topics[language].map((option, index) => (
+                                    <option
+                                        value={option}
+                                        key={index}
+                                    >
+                                        {option}
+                                    </option>
+                                ))} */}
+                                <option value='SurgicalBasicPrinciples'>Surgical Basic Principles</option>
+                                <option value='PerioperativeManagement'>Perioperative Management</option>
+                                <option value='TraumaAndCriticalCare'>Trauma and Critical Care</option>
                             </select>
                         </div>
+
+                        <div className='flex flex-col'>
+                            <label
+                                htmlFor='topic'
+                                className='uppercase text-xs'
+                            >
+                                Topic
+                            </label>
+                            <select
+                                value={topic}
+                                onChange={(e) => setTopic(e.target.value)}
+                                name='topic'
+                                className='quiz-select'
+                            >
+                                {/* {topics[language].map((option, index) => (
+                                    <option
+                                        value={option}
+                                        key={index}
+                                    >
+                                        {option}
+                                    </option>
+                                ))} */}
+                                <option value='SurgicalBasicPrinciples'>Surgical Basic Principles</option>
+                                <option value='PerioperativeManagement'>Perioperative Management</option>
+                                <option value='TraumaAndCriticalCare'>Trauma and Critical Care</option>
+                            </select>
+                        </div>
+
 
                         {/* DIFFICULTY */}
                         <div className='flex flex-col'>
                             <label
                                 htmlFor='difficult'
-                                className='uppercase text-xs font-semibold'
+                                className='uppercase text-xs'
                             >
                                 Difficulty
                             </label>
@@ -134,7 +147,6 @@ const HomePage = () => {
                             </select>
                         </div>
 
-                        
                     </div>
 
                     <div className='mx-auto mt-8'>
@@ -156,15 +168,14 @@ const HomePage = () => {
                 </form>
             </div>
 
-            <p
-                className='fixed bottom-0 flex items-center gap-2 pb-2 font-bold text-m text-black transition hover:text-purple-500 sm:m-0'
+            <a
+                className='fixed bottom-0 flex items-center gap-2 pb-2 font-mono text-sm text-white/70 transition hover:text-emerald-300 sm:m-0'
                 href='#'
                 target='_blank'
             >
-                Devloped with love by Glint Ai
-            </p>
+                Developed with love by GLINTAI
+            </a>
         </div>
-
     )
 }
 export default HomePage
